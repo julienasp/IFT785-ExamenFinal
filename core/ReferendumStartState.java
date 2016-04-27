@@ -10,7 +10,12 @@ package core;
  */
 public class ReferendumStartState implements ReferendumState{
     @Override
-    public void doAction(Referendum r) {
+    public int getStateCode() {
+        return Referendum.OUVERT;	
+    }
+    
+    @Override
+    public void doStateAction(Referendum r) {
         System.out.println("Player is in start state");
         r.setState(this);	
     }
