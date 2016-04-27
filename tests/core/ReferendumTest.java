@@ -104,89 +104,9 @@ public class ReferendumTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of estEligible method, of class Referendum.
-     */
-    @Test
-    public void testEstEligible() {
-        System.out.println("estEligible");
-        Electeur electeur = null;
-        Referendum instance = new Referendum();
-        boolean expResult = false;
-        boolean result = instance.estEligible(electeur);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+   
+    
 
-    /**
-     * Test of getElecteurSuivant method, of class Referendum.
-     */
-    @Test
-    public void testGetElecteurSuivant() {
-        System.out.println("getElecteurSuivant");
-        Referendum instance = new Referendum();
-        Electeur expResult = null;
-        Electeur result = instance.getElecteurSuivant();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getVotes method, of class Referendum.
-     */
-    @Test
-    public void testGetVotes_0args() {
-        System.out.println("getVotes");
-        Referendum instance = new Referendum();
-        Vector[] expResult = null;
-        Vector[] result = instance.getVotes();
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getVotes method, of class Referendum.
-     */
-    @Test
-    public void testGetVotes_int() {
-        System.out.println("getVotes");
-        int i = 0;
-        Referendum instance = new Referendum();
-        Vector<BulletinReferendum> expResult = null;
-        Vector<BulletinReferendum> result = instance.getVotes(i);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setVotes method, of class Referendum.
-     */
-    @Test
-    public void testSetVotes_VectorArr() {
-        System.out.println("setVotes");
-        Vector[] votes = null;
-        Referendum instance = new Referendum();
-        instance.setVotes(votes);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setVotes method, of class Referendum.
-     */
-    @Test
-    public void testSetVotes_int_Vector() {
-        System.out.println("setVotes");
-        int i = 0;
-        Vector<BulletinReferendum> v = null;
-        Referendum instance = new Referendum();
-        instance.setVotes(i, v);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
     
 }

@@ -26,11 +26,11 @@ public class Referendum {
     /***************************************/
 
     public Referendum() {
-        this.subject = new Subject();
+        this.subject = new Subject(); // new instance of Subject
         statut = INITIALISE;
-        setVotes(new Vector[2]);
-        setVotes(BulletinReferendum.OUI, new Vector<BulletinReferendum>());
-        setVotes(BulletinReferendum.NON, new Vector<BulletinReferendum>());
+        setVotes(new Vector[2]); 
+        setVotes(BulletinReferendum.OUI, new Vector<BulletinReferendum>()); // index 1
+        setVotes(BulletinReferendum.NON, new Vector<BulletinReferendum>()); // index 2
     }
     
     /***************************************/
@@ -132,8 +132,8 @@ public Object depouiller() {
     protected Vector<BulletinReferendum> getVotes(int i) {
         return votes[i];
     }
-    protected void setVotes(Vector<BulletinReferendum>[] votes) {
-        votes = votes;
+    protected void setVotes(Vector<BulletinReferendum>[] v) {
+        this.votes = v;
     }
     protected void setVotes(int i, Vector<BulletinReferendum> v) {
         votes[i] = v;

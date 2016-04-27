@@ -22,13 +22,16 @@ public class RadioCanadaObserver extends Observer {
     public void update() {
         switch(this.subject.getState()){
             case Referendum.OUVERT:
+                Log.log("RadioCanadaObserver-update(); The receive state: Referendum.OUVERT was handle.");
                 instance.debutElection();
             case Referendum.TERMINE:
+                Log.log("RadioCanadaObserver-update(); The receive state: Referendum.TERMINE was handle.");
                 instance.finElection();                 
             case 3:
+                Log.log("RadioCanadaObserver-update(); The receive state: Referendum.NEWVOTE was handle.");
                 instance.unNouveauVote();
            default:
-               Log.log("The receive state value isn't handle.");
+               Log.log("RadioCanadaObserver-update(); The receive state: "+this.subject.getState()+" isn't handle.");
        } 
     }
 }
