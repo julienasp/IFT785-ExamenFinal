@@ -88,35 +88,14 @@ public class Referendum {
         }
     }
     public void votation() {
-        switch (statut) {
-            case INITIALISE: { Log.log("Referendum-votation(): statut invalide");break; }
-            case OUVERT: {
-                            Log.log("Referendum-votation(): Un vote");
-                            Electeur unElecteur = getElecteurSuivant();
-                            isoloir(unElecteur);
-                            this.subject.setState(3); // 3 is the state for a new vote
-                            break;
-                           }
-            case TERMINE: { Log.log("Referendum-votation(): statut invalide");break; }
+       //Use of the State pattern
+       this.getState().doVoting(this);    
     }
-}
-// rend le vainqueur du référendum
-public Object depouiller() {
-    switch (statut) {
-        case INITIALISE: { Log.log("Referendum-depouiller(): statut invalide");break; }
-        case OUVERT: { Log.log("Referendum-depouiller(): statut invalide");break; }
-        case TERMINE: { 
-                        Log.log("Referendum-depouiller(): statut invalide");
-                        int nbOui = getVotes(BulletinReferendum.OUI).size();
-                        int nbNon = getVotes(BulletinReferendum.NON).size();
-                        if (nbOui > nbNon)
-                            return BulletinReferendum.OUI;
-                        else
-                            return BulletinReferendum.NON;                        
-                      }
+
+    public Object depouiller() {
+        //Use of the State pattern
+        return this.getState().getReferendumResult(this);
     }
-    return null; // aucun vainqueur ou invocation inappropriée
-}
 
     public void isoloir(Electeur electeur) {
         if (estEligible (electeur)) {

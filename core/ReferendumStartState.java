@@ -23,6 +23,14 @@ public class ReferendumStartState implements IReferendumState{
     }
     
     @Override
+    public void doVoting(Referendum r){
+        Log.log("ReferendumStartState-doVoting(): A new vote is being process.");        
+        Electeur unElecteur = r.getElecteurSuivant();
+        r.isoloir(unElecteur);
+        r.getSubject().setState(3); // 3 is the state for a new vote        
+    }
+    
+    @Override
     public void doStateAction(Referendum r) {
         Log.log("ReferendumStartState-doStateAction(): The start of the Referendum");
         r.setState(this);	
