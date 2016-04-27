@@ -13,7 +13,7 @@ public class Referendum {
     /******************************/
     /****  PRIVATE ATTRIBUTES *****/
     /******************************/
-    private int statut;
+    private ReferendumState state;
     
     //Design pattern - Observer : Subject 
     private Subject subject = null;
@@ -32,22 +32,25 @@ public class Referendum {
         setVotes(BulletinReferendum.OUI, new Vector<BulletinReferendum>()); // index 1
         setVotes(BulletinReferendum.NON, new Vector<BulletinReferendum>()); // index 2
     }
+
+ 
     
     /***************************************/
     /********  GETTER AND SETTER ***********/
     /***************************************/
     
-    public int getStatut() {
-        return statut;
+    
+    public ReferendumState getState() {
+        return state;
+    }
+
+    public void setState(ReferendumState state) {
+        this.state = state;
     }
     
     public Subject getSubject() {
         return subject;
     }
-
-    public void setStatut(int statut) {
-        this.statut = statut;
-    }    
 
     public void setSubject(Subject subject) {
         this.subject = subject;

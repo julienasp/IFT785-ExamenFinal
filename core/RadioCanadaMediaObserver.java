@@ -1,6 +1,6 @@
 /*
  * USED FOR :
- * DESIGN PATTERN : OBSERVER 
+ * DESIGN PATTERN : Observer 
  */
 package core;
 

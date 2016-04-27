@@ -1,6 +1,6 @@
 /*
  * USED FOR :
- * DESIGN PATTERN : STATE
+ * DESIGN PATTERN : State
  */
 package core;
 
@@ -8,6 +8,6 @@ package core;
  *
  * @author JUASP-G73-Android
  */
-public class ReferendumState {
-    
+public interface ReferendumState {
+    public void doAction(Referendum r);
 }
