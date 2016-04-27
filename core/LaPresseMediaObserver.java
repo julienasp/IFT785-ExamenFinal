@@ -21,17 +21,25 @@ public class LaPresseMediaObserver extends Observer {
     @Override
     public void update() {
         switch(this.subject.getState()){
-            case Referendum.OUVERT:
+            case Referendum.OUVERT:{
                 Log.log("LaPresseObserver-update(): The receive state: Referendum.OUVERT was handle.");
                 instance.ouverteElection();
-            case Referendum.TERMINE:
+                break;
+            }
+            case Referendum.TERMINE:{
                 Log.log("LaPresseObserver-update(): The receive state: Referendum.TERMINE was handle.");
-                instance.fermetureElection();                 
-            case 3:
+                instance.fermetureElection();
+                break;
+            }              
+            case 3:{
                 Log.log("LaPresseObserver-update(): The receive state: Referendum.NEWVOTE was handle.");
                 instance.nouveauVote();
-           default:
+                break;
+            }
+           default:{
                Log.log("LaPresseObserver-update(): The receive state: "+this.subject.getState()+" isn't handle.");
+               break;
+           }
        } 
     }
 }

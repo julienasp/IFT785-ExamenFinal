@@ -24,14 +24,18 @@ public class RadioCanadaMediaObserver extends Observer {
             case Referendum.OUVERT:
                 Log.log("RadioCanadaObserver-update(); The receive state: Referendum.OUVERT was handle.");
                 instance.debutElection();
+                break;
             case Referendum.TERMINE:
                 Log.log("RadioCanadaObserver-update(); The receive state: Referendum.TERMINE was handle.");
-                instance.finElection();                 
+                instance.finElection(); 
+                break;
             case 3:
                 Log.log("RadioCanadaObserver-update(); The receive state: Referendum.NEWVOTE was handle.");
                 instance.unNouveauVote();
+                break;
            default:
                Log.log("RadioCanadaObserver-update(); The receive state: "+this.subject.getState()+" isn't handle.");
+               break;
        } 
     }
 }

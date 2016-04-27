@@ -61,48 +61,55 @@ public class Referendum {
     public void ouvrir() {
         switch (statut) {
             case INITIALISE: { 
+                                Log.log("Referendum-ouvrir(): Ouverture du referendum");
                                 statut = OUVERT;
                                 this.subject.setState(statut);
+                                break;
                 }
-            case OUVERT: { Log.log("statut invalide"); }
-            case TERMINE: { Log.log("statut invalide"); }
+            case OUVERT: { Log.log("Referendum-ouvrir():statut invalide"); break;}
+            case TERMINE: { Log.log("Referendum-ouvrir():statut invalide");break; }
         }
     }
     public void fermer() {
         switch (statut) {
-            case INITIALISE: { Log.log("statut invalide"); }
+            case INITIALISE: { Log.log("Referendum-fermer(): statut invalide");break; }
             case OUVERT:    { 
+                                Log.log("Referendum-fermer(): fermeture du referendum");
                                 statut = TERMINE;
                                 this.subject.setState(statut);
                                 depouiller();
+                                break;
                             }
-        case TERMINE: { Log.log("statut invalide"); }
+        case TERMINE: { Log.log("Referendum-fermer(): statut invalide");break; }
         }
        
     }
     public void votation() {
         switch (statut) {
-            case INITIALISE: { Log.log("statut invalide"); }
+            case INITIALISE: { Log.log("Referendum-votation(): statut invalide");break; }
             case OUVERT: {
+                            Log.log("Referendum-votation(): Un vote");
                             Electeur unElecteur = getElecteurSuivant();
                             isoloir(unElecteur);
                             this.subject.setState(3); // 3 is the state for a new vote
+                            break;
                            }
-            case TERMINE: { Log.log("statut invalide"); }
+            case TERMINE: { Log.log("Referendum-votation(): statut invalide");break; }
     }
 }
 // rend le vainqueur du référendum
 public Object depouiller() {
     switch (statut) {
-        case INITIALISE: { Log.log("statut invalide"); }
-        case OUVERT: { Log.log("statut invalide"); }
+        case INITIALISE: { Log.log("Referendum-depouiller(): statut invalide");break; }
+        case OUVERT: { Log.log("Referendum-depouiller(): statut invalide");break; }
         case TERMINE: { 
+                        Log.log("Referendum-depouiller(): statut invalide");
                         int nbOui = getVotes(BulletinReferendum.OUI).size();
                         int nbNon = getVotes(BulletinReferendum.NON).size();
                         if (nbOui > nbNon)
                             return BulletinReferendum.OUI;
                         else
-                            return BulletinReferendum.NON;
+                            return BulletinReferendum.NON;                        
                       }
     }
     return null; // aucun vainqueur ou invocation inappropriée
