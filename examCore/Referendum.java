@@ -8,7 +8,7 @@
  *
  * @author JUASP-G73-Android
  */
-package core;
+package examCore;
 
 public class Referendum {
     final static public int INITIALISE = 0;

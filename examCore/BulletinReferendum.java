@@ -8,7 +8,7 @@
  *
  * @author JUASP-G73-Android
  */
-package core;
+package examCore;
 public class BulletinReferendum {
     final static int OUI = 0;
     final static int NON = 1;
