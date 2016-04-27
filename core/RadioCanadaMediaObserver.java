@@ -9,11 +9,11 @@ package core;
  *
  * @author JUASP-G73-Android
  */
-public class RadioCanadaObserver extends Observer {    
+public class RadioCanadaMediaObserver extends Observer {    
     //Récupération de l'instance de LaPresse    
     private RadioCanada instance = RadioCanada.getInstance();
     
-    public RadioCanadaObserver(Subject subject){
+    public RadioCanadaMediaObserver(Subject subject){
        this.subject = subject;
        this.subject.attach(this);
     }

@@ -9,11 +9,11 @@ package core;
  *
  * @author JUASP-G73-Android
  */
-public class LaPresseObserver extends Observer {    
+public class LaPresseMediaObserver extends Observer {    
     //Récupération de l'instance de LaPresse    
     private LaPresse instance = LaPresse.getInstance();
     
-    public LaPresseObserver(Subject subject){
+    public LaPresseMediaObserver(Subject subject){
        this.subject = subject;
        this.subject.attach(this);
     }
