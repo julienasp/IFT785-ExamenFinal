@@ -13,7 +13,15 @@ package core;
 
 
 public class Electeur {
-    public void voter(BulletinReferendum b) { 
-    Log.log("Electeur à voter ");}
-
+    public void voter(BulletinReferendum b) {
+        //We could add an InputStream here to retreive the vote from the userInput
+        //But i'm a Federalist so every voter are voting no 
+        b.voter(BulletinReferendum.NON);
+        if(b.isValide()){
+            Log.log("Electeur à voter et son vote est valide");
+        }
+        else{
+            Log.log("Electeur à voter et son vote est non valide");
+        }        
+    ;}
 }
