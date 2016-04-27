@@ -29,13 +29,13 @@ public class RadioCanada {
     /* FIN DESIGN PATTERN SINGLETON*/
     /*******************************/
     public void debutElection(){ 
-        Log.log("Debut élection");
+        Log.log("RadioCanada-debutElection(): Debut élection");
     }
     public void unNouveauVote(){ 
-        Log.log("Un nouveau vote");
+        Log.log("RadioCanada-unNouveauVote(): Un nouveau vote");
     }
     public void finElection(){ 
-        Log.log("Fin élection");
+        Log.log("RadioCanada-finElection():Fin élection");
     }
 
 }

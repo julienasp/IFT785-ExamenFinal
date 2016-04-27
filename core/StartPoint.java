@@ -7,13 +7,11 @@ public class StartPoint {
         RadioCanadaObserver rco = new RadioCanadaObserver(r.getSubject());
                 
         r.ouvrir();        
-        
+        for(int i = 0; i < 10 ; i++){
+            r.votation();
+        }
         r.fermer();
-       
         
-
-        
-		
 	}
 
 }

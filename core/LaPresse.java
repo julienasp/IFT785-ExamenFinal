@@ -30,12 +30,12 @@ public class LaPresse {
     /*******************************/
     
     public void ouverteElection(){ 
-        Log.log("Debut élection");
+        Log.log("LaPresse-ouverteElection(): Debut élection");
     }
     public void nouveauVote(){ 
-        Log.log("Un nouveau vote");
+        Log.log("LaPresse-nouveauVote(): Un nouveau vote");
     }
     public void fermetureElection(){ 
-        Log.log("Fin élection");
+        Log.log("LaPresse-fermetureElection(): Fin élection");
     }
 }
