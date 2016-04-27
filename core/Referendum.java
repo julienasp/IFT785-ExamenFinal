@@ -1,14 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package core;
 
-/**
- *
- * @author JUASP-G73-Android
- */
-package examCore;
+import java.util.Vector;
 
 public class Referendum {
     final static public int INITIALISE = 0;
@@ -75,8 +67,12 @@ public void isoloir(Electeur electeur) {
         getVotes(b.getVoteIndex()).add(b);
     }
 }
-//protected boolean estEligible(Electeur electeur) {  }
-//protected Electeur getElecteurSuivant() {  }
+protected boolean estEligible(Electeur electeur) { 
+    return true;
+}
+protected Electeur getElecteurSuivant() { 
+    return new Electeur();
+}
 protected Vector[] getVotes() {return votes;}
 protected Vector<BulletinReferendum> getVotes(int i) {return votes[i];}
 protected void setVotes(Vector<BulletinReferendum>[] votes) {votes = votes;}

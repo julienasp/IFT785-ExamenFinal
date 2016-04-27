@@ -1,3 +1,5 @@
+package core;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,9 +10,10 @@
  *
  * @author JUASP-G73-Android
  */
-package examCore;
-public class Log {
-    static public void log(String message){ 
-        System.out.println(message);
-    }
+
+
+public class Electeur {
+    public void voter(BulletinReferendum b) { 
+    Log.log("Electeur à voter ");}
+
 }

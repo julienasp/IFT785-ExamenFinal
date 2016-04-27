@@ -1,3 +1,5 @@
+package core;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,7 +10,7 @@
  *
  * @author JUASP-G73-Android
  */
-package examCore;
+
 public class BulletinReferendum {
     final static int OUI = 0;
     final static int NON = 1;
