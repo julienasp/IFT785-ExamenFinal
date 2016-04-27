@@ -27,8 +27,8 @@ public class Referendum {
 
     public Referendum() {
         this.subject = new Subject(); // new instance of Subject
-        IReferendumState rs = ReferendumStateFactory.getReferendumState("INITIALISE");
-        rs.doStateAction(this);
+        //Replace Temp with Query
+        ReferendumStateFactory.getReferendumState("INITIALISE").doStateAction(this);        
         setVotes(new Vector[2]); 
         setVotes(BulletinReferendum.OUI, new Vector<BulletinReferendum>()); // index 1
         setVotes(BulletinReferendum.NON, new Vector<BulletinReferendum>()); // index 2
