@@ -4,6 +4,8 @@
  */
 package core;
 
+
+
 /**
  *
  * @author JUASP-G73-Android
@@ -16,7 +18,7 @@ public class ReferendumStartState implements ReferendumState{
     
     @Override
     public void doStateAction(Referendum r) {
-        System.out.println("Player is in start state");
+        Log.log("ReferendumStartState-doStateAction(): Ouverture du referendum");
         r.setState(this);	
     }
 }

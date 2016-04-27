@@ -27,7 +27,8 @@ public class Referendum {
 
     public Referendum() {
         this.subject = new Subject(); // new instance of Subject
-        statut = INITIALISE;
+        ReferendumState rs = ReferendumStateFactory.getReferendumState("INITIALISE");
+        rs.doStateAction(this);
         setVotes(new Vector[2]); 
         setVotes(BulletinReferendum.OUI, new Vector<BulletinReferendum>()); // index 1
         setVotes(BulletinReferendum.NON, new Vector<BulletinReferendum>()); // index 2
@@ -62,30 +63,29 @@ public class Referendum {
     /*************  METHODS ****************/
     /***************************************/
     public void ouvrir() {
-        switch (statut) {
-            case INITIALISE: { 
-                                Log.log("Referendum-ouvrir(): Ouverture du referendum");
-                                statut = OUVERT;
-                                this.subject.setState(statut);
-                                break;
-                }
-            case OUVERT: { Log.log("Referendum-ouvrir():statut invalide"); break;}
-            case TERMINE: { Log.log("Referendum-ouvrir():statut invalide");break; }
+        if(this.getState().getStateCode() == OUVERT) {
+        //Replace Temp with Query
+        ReferendumStateFactory.getReferendumState("START").doStateAction(this);
+        
+        //We change the state on the Subject, so he can notify all the observers
+        this.subject.setState(this.getState().getStateCode());
+        }
+        else{
+            Log.log("Referendum-ouvrir(): statut invalide");
         }
     }
-    public void fermer() {
-        switch (statut) {
-            case INITIALISE: { Log.log("Referendum-fermer(): statut invalide");break; }
-            case OUVERT:    { 
-                                Log.log("Referendum-fermer(): fermeture du referendum");
-                                statut = TERMINE;
-                                this.subject.setState(statut);
-                                depouiller();
-                                break;
-                            }
-        case TERMINE: { Log.log("Referendum-fermer(): statut invalide");break; }
+    public void fermer() {       
+        if(this.getState().getStateCode() == OUVERT) {
+            //Replace Temp with Query
+            ReferendumStateFactory.getReferendumState("STOP").doStateAction(this);
+            
+            //We change the state on the Subject, so he can notify all the observers
+            this.subject.setState(this.getState().getStateCode());
+            depouiller();
         }
-       
+        else{
+            Log.log("Referendum-fermer(): statut invalide");
+        }
     }
     public void votation() {
         switch (statut) {

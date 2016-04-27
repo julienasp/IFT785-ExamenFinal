@@ -16,7 +16,7 @@ public class ReferendumStopState implements ReferendumState {
     
     @Override
     public void doStateAction(Referendum r) {
-        System.out.println("Player is in start state");
-        r.setState(this);	
+        Log.log("Referendum-fermer(): fermeture du referendum");
+        r.setState(this);
     }
 }
