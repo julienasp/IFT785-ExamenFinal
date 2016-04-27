@@ -60,21 +60,29 @@ public Object depouiller() {
     return null; // aucun vainqueur ou invocation inappropriée
 }
 
-public void isoloir(Electeur electeur) {
-    if (estEligible (electeur)) {
-        BulletinReferendum b = new BulletinReferendum();
-        electeur.voter(b);
-        getVotes(b.getVoteIndex()).add(b);
+    public void isoloir(Electeur electeur) {
+        if (estEligible (electeur)) {
+            BulletinReferendum b = new BulletinReferendum();
+            electeur.voter(b);
+            getVotes(b.getVoteIndex()).add(b);
+        }
     }
-}
-protected boolean estEligible(Electeur electeur) { 
-    return true;
-}
-protected Electeur getElecteurSuivant() { 
-    return new Electeur();
-}
-protected Vector[] getVotes() {return votes;}
-protected Vector<BulletinReferendum> getVotes(int i) {return votes[i];}
-protected void setVotes(Vector<BulletinReferendum>[] votes) {votes = votes;}
-protected void setVotes(int i, Vector<BulletinReferendum> v) {votes[i] = v;}
+    protected boolean estEligible(Electeur electeur) { 
+        return true;
+    }
+    protected Electeur getElecteurSuivant() { 
+        return new Electeur();
+    }
+    protected Vector[] getVotes() {
+        return votes;
+    }
+    protected Vector<BulletinReferendum> getVotes(int i) {
+        return votes[i];
+    }
+    protected void setVotes(Vector<BulletinReferendum>[] votes) {
+        votes = votes;
+    }
+    protected void setVotes(int i, Vector<BulletinReferendum> v) {
+        votes[i] = v;
+    }
 }

@@ -9,11 +9,11 @@ package core;
  *
  * @author JUASP-G73-Android
  */
-public class LaPresseObserver extends Observer {    
+public class RadioCanadaObserver extends Observer {    
     //Récupération de l'instance de LaPresse    
-    private LaPresse instance = LaPresse.getInstance();
+    private RadioCanada instance = RadioCanada.getInstance();
     
-    public LaPresseObserver(Subject subject){
+    public RadioCanadaObserver(Subject subject){
        this.subject = subject;
        this.subject.attach(this);
     }
@@ -22,11 +22,11 @@ public class LaPresseObserver extends Observer {
     public void update() {
         switch(this.subject.getState()){
             case Referendum.OUVERT:
-                instance.ouverteElection();
+                instance.debutElection();
             case Referendum.TERMINE:
-                instance.fermetureElection();                 
+                instance.finElection();                 
             case 3:
-                instance.nouveauVote();
+                instance.unNouveauVote();
            default:
                Log.log("The receive state value isn't handle.");
        } 
