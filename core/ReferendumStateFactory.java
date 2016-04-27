@@ -9,7 +9,7 @@ package core;
  * @author JUASP-G73-Android
  */
 public class ReferendumStateFactory {
-    public static ReferendumState getReferendumState(String typeReferendumState){
+    public static IReferendumState getReferendumState(String typeReferendumState){
         
 	switch (typeReferendumState.toUpperCase()) {
             case "INITIALISE":  Log.log("ReferendumStateFactory-getReferendumState(): new ReferendumInitialiseState returned"); return new ReferendumInitialiseState();                    

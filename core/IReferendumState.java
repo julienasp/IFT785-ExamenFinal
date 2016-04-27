@@ -8,7 +8,9 @@ package core;
  *
  * @author JUASP-G73-Android
  */
-public interface ReferendumState {
+public interface IReferendumState {
     public int getStateCode();
     public void doStateAction(Referendum r);
+    public void doVoting(Referendum r);
+    public Object getReferendumResult(Referendum r);
 }

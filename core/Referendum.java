@@ -13,7 +13,7 @@ public class Referendum {
     /******************************/
     /****  PRIVATE ATTRIBUTES *****/
     /******************************/
-    private ReferendumState state;
+    private IReferendumState state;
     
     //Design pattern - Observer : Subject 
     private Subject subject = null;
@@ -27,7 +27,7 @@ public class Referendum {
 
     public Referendum() {
         this.subject = new Subject(); // new instance of Subject
-        ReferendumState rs = ReferendumStateFactory.getReferendumState("INITIALISE");
+        IReferendumState rs = ReferendumStateFactory.getReferendumState("INITIALISE");
         rs.doStateAction(this);
         setVotes(new Vector[2]); 
         setVotes(BulletinReferendum.OUI, new Vector<BulletinReferendum>()); // index 1
@@ -41,11 +41,11 @@ public class Referendum {
     /***************************************/
     
     
-    public ReferendumState getState() {
+    public IReferendumState getState() {
         return state;
     }
 
-    public void setState(ReferendumState state) {
+    public void setState(IReferendumState state) {
         this.state = state;
     }
     
@@ -64,11 +64,11 @@ public class Referendum {
     /***************************************/
     public void ouvrir() {
         if(this.getState().getStateCode() == OUVERT) {
-        //Replace Temp with Query
-        ReferendumStateFactory.getReferendumState("START").doStateAction(this);
-        
-        //We change the state on the Subject, so he can notify all the observers
-        this.subject.setState(this.getState().getStateCode());
+            //Replace Temp with Query
+            ReferendumStateFactory.getReferendumState("START").doStateAction(this);
+
+            //We change the state on the Subject, so he can notify all the observers
+            this.subject.setState(this.getState().getStateCode());
         }
         else{
             Log.log("Referendum-ouvrir(): statut invalide");
