@@ -32,7 +32,17 @@ public class ReferendumStartState implements IReferendumState{
     
     @Override
     public void doStateAction(Referendum r) {
-        Log.log("ReferendumStartState-doStateAction(): The start of the Referendum");
-        r.setState(this);	
+        if(r.getState().getStateCode() == Referendum.INITIALISE){
+            Log.log("ReferendumStartState-doStateAction(): The start of the Referendum");
+            
+            //We set the new State
+            r.setState(this);
+            
+            //We change the state on the Subject, so he can notify all the observers
+            r.getSubject().setState(this.getStateCode());           
+        }
+        else{
+             Log.log("ReferendumStartState-doStateAction(): invalide state, the Referendum must be initialise first.");
+        }
     }
 }

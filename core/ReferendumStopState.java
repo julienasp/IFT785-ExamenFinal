@@ -32,7 +32,20 @@ public class ReferendumStopState implements IReferendumState {
     
     @Override
     public void doStateAction(Referendum r) {
-        Log.log("-ReferendumStopState-doStateAction(): doing action relative to the end of the Referendum");
-        r.setState(this);
+        if(r.getState().getStateCode() == Referendum.OUVERT){
+            Log.log("ReferendumStopState-doStateAction(): doing action relative to the end of the Referendum");
+            
+            //We set the new State
+            r.setState(this);
+            
+            //We change the state on the Subject, so he can notify all the observers
+            r.getSubject().setState(this.getStateCode()); 
+            
+            //We proceed
+            r.depouiller();
+        }
+        else{
+            Log.log("ReferendumStopState-doStateAction(): invalide state, the Referendum need to be started first.");  
+        }
     }
 }

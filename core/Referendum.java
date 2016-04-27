@@ -62,30 +62,13 @@ public class Referendum {
     /***************************************/
     /*************  METHODS ****************/
     /***************************************/
-    public void ouvrir() {
-        if(this.getState().getStateCode() == OUVERT) {
-            //Replace Temp with Query
-            ReferendumStateFactory.getReferendumState("START").doStateAction(this);
-
-            //We change the state on the Subject, so he can notify all the observers
-            this.subject.setState(this.getState().getStateCode());
-        }
-        else{
-            Log.log("Referendum-ouvrir(): statut invalide");
-        }
+    public void ouvrir() {        
+        //Replace Temp with Query + State pattern
+        ReferendumStateFactory.getReferendumState("START").doStateAction(this);
     }
-    public void fermer() {       
-        if(this.getState().getStateCode() == OUVERT) {
-            //Replace Temp with Query
-            ReferendumStateFactory.getReferendumState("STOP").doStateAction(this);
-            
-            //We change the state on the Subject, so he can notify all the observers
-            this.subject.setState(this.getState().getStateCode());
-            depouiller();
-        }
-        else{
-            Log.log("Referendum-fermer(): statut invalide");
-        }
+    public void fermer() {  
+        //Replace Temp with Query + State pattern
+        ReferendumStateFactory.getReferendumState("STOP").doStateAction(this);    
     }
     public void votation() {
        //Use of the State pattern
