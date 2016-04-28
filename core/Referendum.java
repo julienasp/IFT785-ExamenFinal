@@ -29,7 +29,10 @@ public class Referendum extends Election {
     public Referendum() {
         this.subject = new Subject(); // new instance of Subject
         //Replace Temp with Query
-        ReferendumStateFactory.getReferendumState("INITIALISE").doStateAction(this);        
+        ReferendumStateFactory.getReferendumState("INITIALISE").doStateAction(this);
+        
+        //Default VotingSystemStandard is set to ReferendumVotingSystemStandardStrategy
+        setVotingSystemStandard(VotingSystemStandardStrategyFactory.getVotingSystemStandardStrategy("ReferendumVSSS"));
         setVotes(new Vector[2]); 
         setVotes(BulletinReferendum.OUI, new Vector<BulletinReferendum>()); // index 1
         setVotes(BulletinReferendum.NON, new Vector<BulletinReferendum>()); // index 2
@@ -82,13 +85,12 @@ public class Referendum extends Election {
        //Use of the State pattern
        this.getState().doVoting(this);    
     }
-
     public Object depouiller() {
         //Use of the State pattern
         return this.getState().getReferendumResult(this);
     }
-
     public void isoloir(Electeur electeur) {
+        //Use of the Strategy pattern
         IVotingSystemStandardStrategy vss = this.getVotingSystemStandard();
         if(vss.validateEligibility(electeur)){
             Bulletin b = vss.giveBallotPaper();

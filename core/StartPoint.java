@@ -15,6 +15,10 @@ public class StartPoint {
                 
         r.ouvrir();        
         for(int i = 0; i < 10 ; i++){
+            if(i == 4){
+                // New Strategy after execution 
+                r.setVotingSystemStandard(VotingSystemStandardStrategyFactory.getVotingSystemStandardStrategy("ReferendumVotingSystemStandardStrategy")); 
+            }
             r.votation();
         }
         r.fermer();
