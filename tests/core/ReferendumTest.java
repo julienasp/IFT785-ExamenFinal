@@ -5,10 +5,11 @@
  */
 package tests.core;
 
-import core.BulletinReferendum;
 import core.Electeur;
+import core.IReferendumState;
 import core.Referendum;
-import java.util.Vector;
+import core.ReferendumStateFactory;
+import core.Subject;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -42,6 +43,61 @@ public class ReferendumTest {
     }
 
     /**
+     * Test of getState method, of class Referendum.
+     */
+    @Test
+    public void testGetState() {
+        System.out.println("getState");
+        Referendum instance = new Referendum();
+        IReferendumState expResult = ReferendumStateFactory.getReferendumState("INITIALISE");
+        IReferendumState result = instance.getState();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setState method, of class Referendum.
+     */
+    @Test
+    public void testSetState() {
+        System.out.println("setState");
+        IReferendumState state = null;
+        Referendum instance = new Referendum();
+        instance.setState(state);
+        assertEquals(state, instance.getState());
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getSubject method, of class Referendum.
+     */
+    @Test
+    public void testGetSubject() {
+        System.out.println("getSubject");
+        Referendum instance = new Referendum();
+        Subject expResult = null;
+        Subject result = instance.getSubject();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setSubject method, of class Referendum.
+     */
+    @Test
+    public void testSetSubject() {
+        System.out.println("setSubject");
+        Subject subject = null;
+        Referendum instance = new Referendum();
+        instance.setSubject(subject);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
+    /**
      * Test of ouvrir method, of class Referendum.
      */
     @Test
@@ -50,7 +106,7 @@ public class ReferendumTest {
         Referendum instance = new Referendum();
         instance.ouvrir();
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -62,7 +118,7 @@ public class ReferendumTest {
         Referendum instance = new Referendum();
         instance.fermer();
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -74,7 +130,7 @@ public class ReferendumTest {
         Referendum instance = new Referendum();
         instance.votation();
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -88,7 +144,7 @@ public class ReferendumTest {
         Object result = instance.depouiller();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -101,12 +157,7 @@ public class ReferendumTest {
         Referendum instance = new Referendum();
         instance.isoloir(electeur);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
-
-   
-    
-
-    
     
 }
