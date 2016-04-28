@@ -18,18 +18,18 @@ public class Electeur {
     /******************************/
     final static int MAN = 0;
     final static int WOMAN = 1;
-    private int sexe;
+    private int gender;
     private int age;
 
     /***************************************/
     /********  GETTER AND SETTER ***********/
     /***************************************/
-    public int getSexe() {
-        return sexe;
+    public int getGender() {
+        return gender;
     }
 
-    public void setSexe(int sexe) {
-        this.sexe = sexe;
+    public void setGender(int g) {
+        this.gender = g;
     }
 
     public int getAge() {
@@ -41,12 +41,12 @@ public class Electeur {
     }
 
     public Electeur() {
-        this.sexe = Electeur.WOMAN; // Default is WOMAN, because i'm a feminist ;)
+        this.gender = Electeur.WOMAN; // Default is WOMAN, because i'm a feminist ;)
         this.age = 21;
     }
 
-    public Electeur(int sexe, int age) {
-        this.sexe = sexe;
+    public Electeur(int g, int age) {
+        this.gender = g;
         this.age = age;
     }
     
