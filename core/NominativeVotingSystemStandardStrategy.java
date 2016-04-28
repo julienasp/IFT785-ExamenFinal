@@ -5,6 +5,12 @@
  */
 package core;
 
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Vector;
+
 /**
  *
  * @author JUASP-G73-Android
@@ -30,12 +36,36 @@ public class NominativeVotingSystemStandardStrategy implements IVotingSystemStan
         }        
     }    
     public Object processingResult(Election e){
-        Referendum r = (Referendum) e;
+        NominativeElection ne  = (NominativeElection) e;
         
-        //Refactoring : Replace Temp with Query
-        if (r.getVotes(BulletinReferendum.OUI).size() > r.getVotes(BulletinReferendum.NON).size())
-            return BulletinReferendum.OUI;
-        else
-            return BulletinReferendum.NON; 
+        int totalVoteCount = 0;
+        
+        //We count the number of votes
+        for(Vector<NominativeBallot> currentNominativeBallot: ne.getVotes().values()){
+            totalVoteCount += currentNominativeBallot.size();
+        }
+        
+        if(totalVoteCount > 0){
+            Hashtable <String,Vector<NominativeBallot>> votes = ne.getVotes();
+
+            //Création d'un set pour parcourir la Hashtable
+            Set set = votes.entrySet();
+
+            //Création d'un iterator pour parcourir notre set
+            Iterator it = set.iterator();
+
+            //Boucle while qui parcours le set.
+            while (it.hasNext()) {
+                Map.Entry entry = (Map.Entry) it.next();
+
+                Vector<NominativeBallot> currentVectorOfNominativeBallot = (Vector<NominativeBallot>) entry.getValue();
+                String currentNominateName = (String) entry.getKey();
+                
+                //If the currentNominate has 50% of the total vote count he wins
+                if( (currentVectorOfNominativeBallot.size() / totalVoteCount) >= 0.5 ) return currentNominateName;
+            }
+        
+        }
+        return "No winner";        
     }
 }
