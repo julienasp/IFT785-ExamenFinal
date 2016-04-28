@@ -3,6 +3,8 @@ package core;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.Vector;
 
 public class NominativeElection extends Election {   
@@ -82,6 +84,28 @@ public class NominativeElection extends Election {
             votes.put((String)it.next(), new Vector<NominativeBallot>());
         }
         return votes;
+    }
+    public Vector<String> extractNomiate(){
+        Vector<String> nominateList = new Vector<String>();
+        
+        Hashtable <String,Vector<NominativeBallot>> votes = this.getVotes();
+
+            //Creating a set for the Hashtable
+            Set set = votes.entrySet();
+
+            //Iterator for the set
+            Iterator it = set.iterator();
+
+            //While loop to iterate through the Set
+            while (it.hasNext()) {
+                Map.Entry entry = (Map.Entry) it.next();
+
+                String currentNominateName = (String) entry.getKey();
+
+                //If the currentNominate has 50% of the total vote count he wins
+                nominateList.add(currentNominateName);
+            }
+        return nominateList;
     }
     public void ouvrir() {        
         //Replace Temp with Query + State pattern
