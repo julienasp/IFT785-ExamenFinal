@@ -13,7 +13,7 @@ package core;
 public class ReferendumStartState implements IReferendumState{
     @Override
     public int getStateCode() {
-        return Referendum.OUVERT;	
+        return Election.OUVERT;	
     }
     
     @Override
@@ -32,7 +32,7 @@ public class ReferendumStartState implements IReferendumState{
     
     @Override
     public void doStateAction(Referendum r) {
-        if(r.getState().getStateCode() == Referendum.INITIALISE){
+        if(r.getState().getStateCode() == Election.INITIALISE){
             Log.log("ReferendumStartState-doStateAction(): The start of the Referendum");
             
             //We set the new State

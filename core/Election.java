@@ -10,6 +10,13 @@ package core;
  */
 public abstract class Election {
     /******************************/
+    /********  CONSTANTS **********/
+    /******************************/
+    final static public int INITIALISE = 0;
+    final static public int OUVERT = 1;
+    final static public int TERMINE = 2;
+    
+    /******************************/
     /****  PRIVATE ATTRIBUTES *****/
     /******************************/
     private IVotingSystemStandardStrategy votingSystemStandard;

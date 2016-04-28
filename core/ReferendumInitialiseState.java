@@ -11,7 +11,7 @@ package core;
 public class ReferendumInitialiseState implements IReferendumState{
     @Override
     public int getStateCode() {
-        return Referendum.INITIALISE;	
+        return Election.INITIALISE;	
     }
     
     @Override

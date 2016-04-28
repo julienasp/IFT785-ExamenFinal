@@ -2,11 +2,11 @@ package core;
 
 import java.util.Vector;
 
-public class Referendum extends Election {
+public class NominativeElection extends Election {   
     /******************************/
     /****  PRIVATE ATTRIBUTES *****/
     /******************************/
-    private IReferendumState state;
+    private INominativeElectionState state;
     
     //Design pattern - Observer : Subject 
     private Subject subject = null;
@@ -18,7 +18,7 @@ public class Referendum extends Election {
     /***********  CONSTRUCTOR **************/
     /***************************************/
 
-    public Referendum() {
+    public NominativeElection() {
         this.subject = new Subject(); // new instance of Subject
         //Replace Temp with Query
         ReferendumStateFactory.getReferendumState("INITIALISE").doStateAction(this);
@@ -36,11 +36,11 @@ public class Referendum extends Election {
     /********  GETTER AND SETTER ***********/
     /***************************************/  
 
-    public IReferendumState getState() {
+    public INominativeElectionState getState() {
         return state;
     }
 
-    public void setState(IReferendumState state) {
+    public void setState(INominativeElectionState state) {
         this.state = state;
     }
     

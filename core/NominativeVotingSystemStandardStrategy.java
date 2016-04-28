@@ -23,10 +23,10 @@ public class NominativeVotingSystemStandardStrategy implements IVotingSystemStan
         e.voter((NominativeBallot)b);
     }
     public void savingVote(Election e, Bulletin b){
-        NominativeElection r = (Referendum) e;
+        NominativeElection ne  = (NominativeElection) e;
         NominativeBallot nb = (NominativeBallot) b;
         if(nb.isValide()){
-            r.getVotes(nb.getVote()).add(nb);
+            ne.getVotes(nb.getVote()).add(nb);
         }        
     }    
     public Object processingResult(Election e){

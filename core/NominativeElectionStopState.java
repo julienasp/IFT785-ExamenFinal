@@ -8,7 +8,7 @@ package core;
  *
  * @author JUASP-G73-Android
  */
-public class ReferendumStopState implements IReferendumState {
+public class NominativeElectionStopState implements IReferendumState {
     @Override
     public int getStateCode() {
         return Election.TERMINE;	
