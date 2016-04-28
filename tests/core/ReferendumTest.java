@@ -7,9 +7,13 @@ package tests.core;
 
 import core.Electeur;
 import core.IReferendumState;
+import core.MediaObserverFactory;
+import core.Observer;
 import core.Referendum;
 import core.ReferendumStateFactory;
 import core.Subject;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -22,7 +26,7 @@ import static org.junit.Assert.*;
  * @author JUASP-G73-Android
  */
 public class ReferendumTest {
-    
+    private Referendum r;    
     public ReferendumTest() {
     }
     
@@ -35,11 +39,56 @@ public class ReferendumTest {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() {        
+        r = new Referendum();        
     }
     
     @After
     public void tearDown() {
+        r = null;
+    }
+    
+    /**
+     * Test of fermer method, with bad state value
+     */
+    @Test
+    public void testInvalideStateMsgForFermer() {
+        System.out.println("Start - InvalideStateMsgForFermer");        
+        r.fermer();
+        System.out.println("End - InvalideStateMsgForFermer");        
+    }
+    
+     /**
+     * Test of voting method, with bad state value
+     */
+    @Test
+    public void testInvalideStateMsgForVotation() {
+        System.out.println("Start - InvalideStateMsgForVotation");        
+        r.votation();
+        System.out.println("End - InvalideStateMsgForVotation");        
+    }
+    
+     /**
+     * Test of depouiller method, with bad state value
+     */
+    @Test
+    public void testInvalideStateMsgForDepouiller() {
+        System.out.println("Start - InvalideStateMsgForDepouiller");        
+        r.depouiller();
+        System.out.println("End - InvalideStateMsgForDepouiller");        
+    }
+    
+     /**
+     * Test of ouvrir method, with bad state value
+     */
+    @Test
+    public void testInvalideStateMsgForOuvrir() {
+        System.out.println("Start - InvalideStateMsgForOuvrir");
+        Referendum instance = new Referendum();
+        instance.ouvrir();
+        instance.fermer();
+        instance.ouvrir();
+        System.out.println("End - InvalideStateMsgForOuvrir");        
     }
 
     /**
@@ -51,9 +100,7 @@ public class ReferendumTest {
         Referendum instance = new Referendum();
         IReferendumState expResult = ReferendumStateFactory.getReferendumState("INITIALISE");
         IReferendumState result = instance.getState();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        assertEquals(expResult.getStateCode(), result.getStateCode());     
     }
 
     /**
@@ -65,9 +112,7 @@ public class ReferendumTest {
         IReferendumState state = null;
         Referendum instance = new Referendum();
         instance.setState(state);
-        assertEquals(state, instance.getState());
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        assertEquals(state, instance.getState());     
     }
 
     /**
@@ -78,10 +123,9 @@ public class ReferendumTest {
         System.out.println("getSubject");
         Referendum instance = new Referendum();
         Subject expResult = null;
+        instance.setSubject(null);
         Subject result = instance.getSubject();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        assertEquals(expResult, result);    
     }
 
     /**
@@ -93,8 +137,7 @@ public class ReferendumTest {
         Subject subject = null;
         Referendum instance = new Referendum();
         instance.setSubject(subject);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        assertEquals(subject, instance.getSubject());    
     }
 
     /**
@@ -104,9 +147,7 @@ public class ReferendumTest {
     public void testOuvrir() {
         System.out.println("ouvrir");
         Referendum instance = new Referendum();
-        instance.ouvrir();
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        instance.ouvrir();    
     }
 
     /**
@@ -117,8 +158,6 @@ public class ReferendumTest {
         System.out.println("fermer");
         Referendum instance = new Referendum();
         instance.fermer();
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -128,9 +167,7 @@ public class ReferendumTest {
     public void testVotation() {
         System.out.println("votation");
         Referendum instance = new Referendum();
-        instance.votation();
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        instance.votation();    
     }
 
     /**
@@ -142,22 +179,6 @@ public class ReferendumTest {
         Referendum instance = new Referendum();
         Object expResult = null;
         Object result = instance.depouiller();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        assertEquals(expResult, result);     
     }
-
-    /**
-     * Test of isoloir method, of class Referendum.
-     */
-    @Test
-    public void testIsoloir() {
-        System.out.println("isoloir");
-        Electeur electeur = null;
-        Referendum instance = new Referendum();
-        instance.isoloir(electeur);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-    
 }
