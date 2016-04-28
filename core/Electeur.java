@@ -53,7 +53,7 @@ public class Electeur {
     /***************************************/
     /*************  METHODS ****************/
     /***************************************/
-    public void voter(BulletinReferendum b) {
+    public void voter(Bulletin b) {
         //We could add an InputStream here to retreive the vote from the userInput
         //But i'm a Federalist so every voter are voting no 
         b.voter(BulletinReferendum.NON);

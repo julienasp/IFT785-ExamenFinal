@@ -16,8 +16,8 @@ public class BulletinReferendum extends Bulletin{
     final static int NON = 1;
     private int vote;
 
-    public void voter(int vote){
-           this.vote = vote;
+    public void voter(Object o){           
+           this.vote = (Integer) o;
     }
     public boolean isValide(){
             return vote == OUI || vote == NON;

@@ -17,16 +17,16 @@ public class NominativeVotingSystemStandardStrategy implements IVotingSystemStan
         else return false;
     }
     public Bulletin giveBallotPaper(){
-        return new BulletinNomative(); // We return a Referendum Ballot Paper
+        return new NominativeBallot(); // We return a Referendum Ballot Paper
     }
     public void votingProcess(Electeur e, Bulletin b){
-        e.voter((BulletinNomative)b);
+        e.voter((NominativeBallot)b);
     }
     public void savingVote(Election e, Bulletin b){
-        Referendum r = (Referendum) e;
-        BulletinReferendum br = (BulletinReferendum) b;
-        if(br.isValide()){
-            r.getVotes(br.getVoteIndex()).add(br);
+        NominativeElection r = (Referendum) e;
+        NominativeBallot nb = (NominativeBallot) b;
+        if(nb.isValide()){
+            r.getVotes(nb.getVote()).add(nb);
         }        
     }    
     public Object processingResult(Election e){

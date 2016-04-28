@@ -10,4 +10,5 @@ package core;
  */
 public abstract class Bulletin {
     abstract boolean isValide(); // Devra être implémenter dans tous les types de bulletin
+    abstract void voter(Object o);
 }
