@@ -22,6 +22,8 @@ public class ReferendumVotingSystemStandardStrategy implements IVotingSystemStan
     public void savingVote(Election e, Bulletin b){
         Referendum r = (Referendum) e;
         BulletinReferendum br = (BulletinReferendum) b;
-        r.getVotes(br.getVoteIndex()).add(br);
+        if(br.isValide()){
+            r.getVotes(br.getVoteIndex()).add(br);
+        }        
     }
 }
