@@ -1,6 +1,6 @@
 /*
  * USED FOR :
- * DESIGN PATTERN : Factory Method
+ * DESIGN PATTERN : Factory Pattern
  */
 package core;
 
