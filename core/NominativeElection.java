@@ -9,8 +9,7 @@ public class NominativeElection extends Election {
     /******************************/
     /****  PRIVATE ATTRIBUTES *****/
     /******************************/
-    private INominativeElectionState state;    
-    private Vector<String> nominate;
+    private INominativeElectionState state;
     private Hashtable <String,Vector<NominativeBallot>> votes;  
     
     //Design pattern - Observer : Subject 
@@ -20,15 +19,15 @@ public class NominativeElection extends Election {
     
     /***************************************/
     /***********  CONSTRUCTOR **************/
-    /***************************************/
-
-    public NominativeElection() {
-        //Static values for the default Constructor                
-        this.nominate.add("A");
-        this.nominate.add("B");
-        this.nominate.add("C");
-        this.nominate.add("D");
-        this.nominate.add("E");
+    /***************************************/    
+     public NominativeElection() {
+        //Static values for the default Constructor
+        Vector<String> nominate = new Vector<String>();
+        nominate.add("A");
+        nominate.add("B");
+        nominate.add("C");
+        nominate.add("D");
+        nominate.add("E");
         //End of the static values
         
         this.subject = new Subject(); // new instance of Subject
@@ -38,15 +37,22 @@ public class NominativeElection extends Election {
         
         //Default VotingSystemStandard is set to ReferendumVotingSystemStandardStrategy
         setVotingSystemStandard(VotingSystemStandardStrategyFactory.getVotingSystemStandardStrategy("NominativeVSSS"));        
-        setVotes(generateInitialVoteTable(this.nominate));       
+        setVotes(generateInitialVoteTable(nominate));       
     }
+    public NominativeElection(Vector<String> nominateList) {        
+        this.subject = new Subject(); // new instance of Subject
+        
+        //Replace Temp with Query
+        NominativeElectionStateFactory.getNominativeElectionState("INITIALISE").doStateAction(this);
 
-  
+        //Default VotingSystemStandard is set to ReferendumVotingSystemStandardStrategy
+        setVotingSystemStandard(VotingSystemStandardStrategyFactory.getVotingSystemStandardStrategy("NominativeVSSS"));        
+        setVotes(generateInitialVoteTable(nominateList));       
+    }
 
     /***************************************/
     /********  GETTER AND SETTER ***********/
     /***************************************/  
-
     public INominativeElectionState getState() {
         return state;
     }
@@ -101,11 +107,11 @@ public class NominativeElection extends Election {
     protected Electeur getElecteurSuivant() { 
         return new Electeur();
     }
-    protected Vector[] getVotes() {
+    protected Hashtable <String,Vector<NominativeBallot>> getVotes() {
         return this.votes;
     }
-    protected Vector<NominativeBallot> getVotes(int i) {
-        return this.votes[i];
+    protected Vector<NominativeBallot> getVotes(String nominateName) {
+        return this.getVotes().get(nominateName);
     }
     protected void setVotes(Hashtable <String,Vector<NominativeBallot>> ht) {
         this.votes = ht;
