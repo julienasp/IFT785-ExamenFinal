@@ -45,16 +45,17 @@ public class NominativeVotingSystemStandardStrategy implements IVotingSystemStan
             totalVoteCount += currentNominativeBallot.size();
         }
         
+        //We dont want a divide by 0
         if(totalVoteCount > 0){
             Hashtable <String,Vector<NominativeBallot>> votes = ne.getVotes();
 
-            //Création d'un set pour parcourir la Hashtable
+            //Creating a set for the Hashtable
             Set set = votes.entrySet();
 
-            //Création d'un iterator pour parcourir notre set
+            //Iterator for the set
             Iterator it = set.iterator();
 
-            //Boucle while qui parcours le set.
+            //While loop to iterate through the Set
             while (it.hasNext()) {
                 Map.Entry entry = (Map.Entry) it.next();
 
@@ -66,6 +67,6 @@ public class NominativeVotingSystemStandardStrategy implements IVotingSystemStan
             }
         
         }
-        return "No winner";        
+        return null;        
     }
 }
