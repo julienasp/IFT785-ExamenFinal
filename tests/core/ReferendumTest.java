@@ -7,11 +7,13 @@ package tests.core;
 
 import core.Electeur;
 import core.IReferendumState;
+import core.IVotingSystemStandardStrategy;
 import core.MediaObserverFactory;
 import core.Observer;
 import core.Referendum;
 import core.ReferendumStateFactory;
 import core.Subject;
+import core.VotingSystemStandardStrategyFactory;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.After;
@@ -114,6 +116,31 @@ public class ReferendumTest {
         instance.setState(state);
         assertEquals(state, instance.getState());     
     }
+    
+       /**
+     * Test of getVotingSystemStandard method, of class Referendum.
+     */
+    @Test
+    public void testGetVotingSystemStandard() {
+        System.out.println("getVotingSystemStandard");
+        Referendum instance = new Referendum();
+        IVotingSystemStandardStrategy expResult = VotingSystemStandardStrategyFactory.getVotingSystemStandardStrategy("ReferendumVSSS");
+        instance.setVotingSystemStandard(expResult);
+        IVotingSystemStandardStrategy result = instance.getVotingSystemStandard();
+        assertEquals(expResult, result);     
+    }
+
+    /**
+     * Test of setVotingSystemStandard method, of class Referendum.
+     */
+    @Test
+    public void testSetVotingSystemStandard() {
+        System.out.println("setVotingSystemStandard");
+        IVotingSystemStandardStrategy strategy = null;
+        Referendum instance = new Referendum();
+        instance.setVotingSystemStandard(strategy);
+        assertEquals(strategy, instance.getVotingSystemStandard());     
+    }
 
     /**
      * Test of getSubject method, of class Referendum.
@@ -180,5 +207,16 @@ public class ReferendumTest {
         Object expResult = null;
         Object result = instance.depouiller();
         assertEquals(expResult, result);     
+    }
+    
+    /**
+     * Test of isoloir method, of class Referendum.
+     */
+    @Test
+    public void testIsoloir() {
+        System.out.println("isoloir");
+        Referendum instance = new Referendum();
+        Electeur e = new Electeur();
+        instance.isoloir(e);    
     }
 }
