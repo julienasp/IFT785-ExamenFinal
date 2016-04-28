@@ -14,7 +14,6 @@ public class Referendum extends Election {
     /****  PRIVATE ATTRIBUTES *****/
     /******************************/
     private IReferendumState state;
-    private IVotingSystemStandardStrategy votingSystemStandard;
     
     //Design pattern - Observer : Subject 
     private Subject subject = null;
@@ -42,15 +41,7 @@ public class Referendum extends Election {
 
     /***************************************/
     /********  GETTER AND SETTER ***********/
-    /***************************************/     
-    
-    public IVotingSystemStandardStrategy getVotingSystemStandard() {
-        return votingSystemStandard;
-    }
-    
-    public void setVotingSystemStandard(IVotingSystemStandardStrategy votingSystemStandard) {
-        this.votingSystemStandard = votingSystemStandard;
-    }
+    /***************************************/  
 
     public IReferendumState getState() {
         return state;
@@ -88,16 +79,7 @@ public class Referendum extends Election {
     public Object depouiller() {
         //Use of the State pattern
         return this.getState().getReferendumResult(this);
-    }
-    public void isoloir(Electeur electeur) {
-        //Use of the Strategy pattern
-        IVotingSystemStandardStrategy vss = this.getVotingSystemStandard();
-        if(vss.validateEligibility(electeur)){
-            Bulletin b = vss.giveBallotPaper();
-            vss.votingProcess(electeur, b);
-            vss.savingVote(this, b);
-        }      
-    }
+    }    
     
     /************************************/
     /******  PROTECTED METHODS **********/

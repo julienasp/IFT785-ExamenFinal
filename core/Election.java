@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * USED FOR :
+ * DESIGN PATTERN : Strategy pattern + Template pattern
  */
 package core;
 
@@ -10,5 +9,31 @@ package core;
  * @author JUASP-G73-Android
  */
 public abstract class Election {
+    /******************************/
+    /****  PRIVATE ATTRIBUTES *****/
+    /******************************/
+    private IVotingSystemStandardStrategy votingSystemStandard;
     
+    /***************************************/
+    /********  GETTER AND SETTER ***********/
+    /***************************************/
+    public IVotingSystemStandardStrategy getVotingSystemStandard() {
+        return this.votingSystemStandard;
+    }    
+    public void setVotingSystemStandard(IVotingSystemStandardStrategy votingSystemStandard) {
+        this.votingSystemStandard = votingSystemStandard;
+    }
+    
+    /***************************************/
+    /**********  FINAL METHODS *************/
+    /***************************************/
+    public final void isoloir(Electeur electeur) {
+        //Use of the Strategy pattern + Template pattern
+        IVotingSystemStandardStrategy vss = this.getVotingSystemStandard();
+        if(vss.validateEligibility(electeur)){
+            Bulletin b = vss.giveBallotPaper();
+            vss.votingProcess(electeur, b);
+            vss.savingVote(this, b);
+        }      
+    }
 }
