@@ -19,9 +19,13 @@ public class StartPoint {
                 // New Strategy after execution 
                 r.setVotingSystemStandard(VotingSystemStandardStrategyFactory.getVotingSystemStandardStrategy("ReferendumVotingSystemStandardStrategy")); 
             }
-            r.votation();
+            r.votation(); // Include Election.isoloir()
         }
-        r.fermer();
+        r.fermer(); // Include Referendum.depouiller()
+        
+        //Print the result
+        String result = (Integer.parseInt(r.depouiller().toString()) == 1) ? "Non":"Oui";
+        System.out.println("The result are : " + result);
         
         
         r.ouvrir(); // Test pour msg d'erreur
