@@ -24,19 +24,6 @@ public class NominativeBallot extends Bulletin{
     /***************************************/
     /***********  CONSTRUCTOR **************/
     /***************************************/
-    
-    public NominativeBallot() {
-        //Static values for the default Constructor
-        Vector<String> nominate = new Vector<String>();
-        nominate.add("A");
-        nominate.add("B");
-        nominate.add("C");
-        nominate.add("D");
-        nominate.add("E");
-        //End of the static values
-        setNominate(nominate);
-    }    
-
     public NominativeBallot(Vector<String> nominateList) {
         this.nominate = nominateList;
     }    
