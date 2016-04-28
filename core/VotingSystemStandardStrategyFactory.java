@@ -12,9 +12,11 @@ public class VotingSystemStandardStrategyFactory {
     public static IVotingSystemStandardStrategy getVotingSystemStandardStrategy(String typeVotingSystemStandardStrategy){
         
 	switch (typeVotingSystemStandardStrategy.toUpperCase()) {
-            case "REFERENDUMVOTINGSYSTEMSTANDARDSTRATEGY":  Log.log("ReferendumStateFactory-getVotingSystemStandardStrategy(): new ReferendumVotingSystemStandardStrategy returned"); return new ReferendumVotingSystemStandardStrategy(); 
-            case "REFERENDUMVSSS":  Log.log("ReferendumStateFactory-getVotingSystemStandardStrategy(): new ReferendumVotingSystemStandardStrategy returned"); return new ReferendumVotingSystemStandardStrategy(); 
-            default: Log.log("ReferendumStateFactory-getVotingSystemStandardStrategy(): null returned");return null;                     
+            case "REFERENDUMVOTINGSYSTEMSTANDARDSTRATEGY":  Log.log("VotingSystemStandardStrategyFactory-getVotingSystemStandardStrategy(): new ReferendumVotingSystemStandardStrategy returned"); return new ReferendumVotingSystemStandardStrategy(); 
+            case "REFERENDUMVSSS":  Log.log("VotingSystemStandardStrategyFactory-getVotingSystemStandardStrategy(): new ReferendumVotingSystemStandardStrategy returned"); return new ReferendumVotingSystemStandardStrategy(); 
+            case "NOMINATIVEVOTINGSYSTEMSTANDARDSTRATEGY":  Log.log("VotingSystemStandardStrategyFactory-getVotingSystemStandardStrategy(): new NominativeVotingSystemStandardStrategy returned"); return new NominativeVotingSystemStandardStrategy(); 
+            case "NOMINATIVEVSSS":  Log.log("VotingSystemStandardStrategyFactory-getVotingSystemStandardStrategy(): new NominativeVotingSystemStandardStrategy returned"); return new NominativeVotingSystemStandardStrategy(); 
+            default: Log.log("VotingSystemStandardStrategyFactory-getVotingSystemStandardStrategy(): null returned");return null;                     
         }
         
     }    

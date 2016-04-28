@@ -21,10 +21,10 @@ public class NominativeElection extends Election {
     public NominativeElection() {
         this.subject = new Subject(); // new instance of Subject
         //Replace Temp with Query
-        ReferendumStateFactory.getReferendumState("INITIALISE").doStateAction(this);
+        NominativeElectionStateFactory.getNominativeElectionState("INITIALISE").doStateAction(this);
         
         //Default VotingSystemStandard is set to ReferendumVotingSystemStandardStrategy
-        setVotingSystemStandard(VotingSystemStandardStrategyFactory.getVotingSystemStandardStrategy("ReferendumVSSS"));
+        setVotingSystemStandard(VotingSystemStandardStrategyFactory.getVotingSystemStandardStrategy("NominativeVSSS"));
         setVotes(new Vector[2]); 
         setVotes(BulletinReferendum.OUI, new Vector<BulletinReferendum>()); // index 1
         setVotes(BulletinReferendum.NON, new Vector<BulletinReferendum>()); // index 2
@@ -59,11 +59,11 @@ public class NominativeElection extends Election {
     /***************************************/
     public void ouvrir() {        
         //Replace Temp with Query + State pattern
-        ReferendumStateFactory.getReferendumState("START").doStateAction(this);
+        NominativeElectionStateFactory.getNominativeElectionState("START").doStateAction(this);
     }
     public void fermer() {  
         //Replace Temp with Query + State pattern
-        ReferendumStateFactory.getReferendumState("STOP").doStateAction(this);    
+        NominativeElectionStateFactory.getNominativeElectionState("STOP").doStateAction(this);    
     }
     public void votation() {
        //Use of the State pattern
@@ -71,7 +71,7 @@ public class NominativeElection extends Election {
     }
     public Object depouiller() {
         //Use of the State pattern
-        return this.getState().getReferendumResult(this);
+        return this.getState().getNominativeElectionResult(this);
     }    
     
     /************************************/
