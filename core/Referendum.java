@@ -2,7 +2,7 @@ package core;
 
 import java.util.Vector;
 
-public class Referendum {
+public class Referendum extends Election {
     /******************************/
     /********  CONSTANTS **********/
     /******************************/
@@ -14,6 +14,7 @@ public class Referendum {
     /****  PRIVATE ATTRIBUTES *****/
     /******************************/
     private IReferendumState state;
+    private IVotingSystemStandardStrategy votingSystemStandard;
     
     //Design pattern - Observer : Subject 
     private Subject subject = null;
@@ -34,13 +35,20 @@ public class Referendum {
         setVotes(BulletinReferendum.NON, new Vector<BulletinReferendum>()); // index 2
     }
 
- 
-    
+  
+
     /***************************************/
     /********  GETTER AND SETTER ***********/
-    /***************************************/
+    /***************************************/     
     
+    public IVotingSystemStandardStrategy getVotingSystemStandard() {
+        return votingSystemStandard;
+    }
     
+    public void setVotingSystemStandard(IVotingSystemStandardStrategy votingSystemStandard) {
+        this.votingSystemStandard = votingSystemStandard;
+    }
+
     public IReferendumState getState() {
         return state;
     }
@@ -82,8 +90,8 @@ public class Referendum {
 
     public void isoloir(Electeur electeur) {
         if (estEligible (electeur)) {
-            BulletinReferendum b = new BulletinReferendum();
-            electeur.voter(b);
+            
+            
             getVotes(b.getVoteIndex()).add(b);
         }
     }
