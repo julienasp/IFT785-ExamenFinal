@@ -18,11 +18,8 @@ public class ReferendumStopState implements IReferendumState {
     public Object getReferendumResult(Referendum r) {
         Log.log("ReferendumStopState-getReferendumResult(): invalide state, the Referendum need to be stop first.");
         
-        //Refactoring : Replace Temp with Query
-        if (r.getVotes(BulletinReferendum.OUI).size() > r.getVotes(BulletinReferendum.NON).size())
-            return BulletinReferendum.OUI;
-        else
-            return BulletinReferendum.NON; 
+        //Use of the Strategy pattern inside the state pattern
+        return r.getVotingSystemStandard().processingResult(r);
     }
 
     @Override

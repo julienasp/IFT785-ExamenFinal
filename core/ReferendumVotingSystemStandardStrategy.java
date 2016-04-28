@@ -25,5 +25,14 @@ public class ReferendumVotingSystemStandardStrategy implements IVotingSystemStan
         if(br.isValide()){
             r.getVotes(br.getVoteIndex()).add(br);
         }        
+    }    
+    public Object processingResult(Election e){
+        Referendum r = (Referendum) e;
+        
+        //Refactoring : Replace Temp with Query
+        if (r.getVotes(BulletinReferendum.OUI).size() > r.getVotes(BulletinReferendum.NON).size())
+            return BulletinReferendum.OUI;
+        else
+            return BulletinReferendum.NON; 
     }
 }

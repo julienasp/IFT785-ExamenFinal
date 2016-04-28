@@ -83,24 +83,21 @@ public class Referendum extends Election {
     
     /************************************/
     /******  PROTECTED METHODS **********/
-    /************************************/
+    /************************************/    
     
-    protected boolean estEligible(Electeur electeur) { 
-        return true;
-    }
     protected Electeur getElecteurSuivant() { 
         return new Electeur();
     }
     protected Vector[] getVotes() {
-        return votes;
+        return this.votes;
     }
     protected Vector<BulletinReferendum> getVotes(int i) {
-        return votes[i];
+        return this.votes[i];
     }
     protected void setVotes(Vector<BulletinReferendum>[] v) {
         this.votes = v;
     }
     protected void setVotes(int i, Vector<BulletinReferendum> v) {
-        votes[i] = v;
+        this.votes[i] = v;
     }
 }
