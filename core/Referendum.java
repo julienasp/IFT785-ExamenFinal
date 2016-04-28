@@ -89,11 +89,12 @@ public class Referendum extends Election {
     }
 
     public void isoloir(Electeur electeur) {
-        if (estEligible (electeur)) {
-            
-            
-            getVotes(b.getVoteIndex()).add(b);
-        }
+        IVotingSystemStandardStrategy vss = this.getVotingSystemStandard();
+        if(vss.validateEligibility(electeur)){
+            Bulletin b = vss.giveBallotPaper();
+            vss.votingProcess(electeur, b);
+            vss.savingVote(this, b);
+        }      
     }
     
     /************************************/

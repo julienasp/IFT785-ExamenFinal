@@ -11,7 +11,7 @@ package core;
  * @author JUASP-G73-Android
  */
 
-public class BulletinReferendum {
+public class BulletinReferendum extends Bulletin{
     final static int OUI = 0;
     final static int NON = 1;
     private int vote;
