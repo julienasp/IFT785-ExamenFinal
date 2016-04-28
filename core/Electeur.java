@@ -53,7 +53,18 @@ public class Electeur {
     /***************************************/
     /*************  METHODS ****************/
     /***************************************/
-    public void voter(Bulletin b) {
+    public void voter(NominativeBallot nb) {
+        //We could add an InputStream here to retreive the vote from the userInput
+        //we'll vote the first element       
+        nb.voter(nb.getNominate().lastElement());
+        if(nb.isValide()){
+            Log.log("Electeur-voter(): Electeur à voter et son vote est valide");
+        }
+        else{
+            Log.log("Electeur-voter(): Electeur à voter et son vote est non valide");
+        }        
+    ;}
+    public void voter(BulletinReferendum b) {
         //We could add an InputStream here to retreive the vote from the userInput
         //But i'm a Federalist so every voter are voting no 
         b.voter(BulletinReferendum.NON);

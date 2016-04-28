@@ -18,7 +18,7 @@ public class NominativeElectionStartState implements INominativeElectionState{
     
     @Override
     public Object getNominativeElectionResult(NominativeElection ne) {
-        Log.log("NominativeElectionStartState-getReferendumResult(): invalide state, the Referendum need to be stop first.");
+        Log.log("NominativeElectionStartState-getNominativeElectionResult(): invalide state, the Nominative Election needs to be stop first.");
         return null;
     }
     
@@ -33,7 +33,7 @@ public class NominativeElectionStartState implements INominativeElectionState{
     @Override
     public void doStateAction(NominativeElection ne) {
         if(ne.getState().getStateCode() == Election.INITIALISE){
-            Log.log("NominativeElectionStartState-doStateAction(): The start of the Referendum");
+            Log.log("NominativeElectionStartState-doStateAction(): The start of the Nominative Election");
             
             //We set the new State
             ne.setState(this);
@@ -42,7 +42,7 @@ public class NominativeElectionStartState implements INominativeElectionState{
             ne.getSubject().setState(this.getStateCode());           
         }
         else{
-             Log.log("NominativeElectionStartState-doStateAction(): invalide state, the Referendum must be initialise first.");
+             Log.log("NominativeElectionStartState-doStateAction(): invalide state, the Nominative Election must be initialise first.");
         }
     }
 }

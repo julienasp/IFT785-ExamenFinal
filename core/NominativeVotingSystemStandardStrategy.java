@@ -22,8 +22,9 @@ public class NominativeVotingSystemStandardStrategy implements IVotingSystemStan
         if(e.getAge() > 18 && e.getAge() < 50 && e.getGender() == Electeur.WOMAN) return true;
         else return false;
     }
-    public Bulletin giveBallotPaper(){
-        return new NominativeBallot(); // We return a Referendum Ballot Paper
+    public Bulletin giveBallotPaper(Election e){
+        NominativeElection ne  = (NominativeElection) e;
+        return new NominativeBallot(ne.extractNomiate()); // We return a Referendum Ballot Paper
     }
     public void votingProcess(Electeur e, Bulletin b){
         e.voter((NominativeBallot)b);

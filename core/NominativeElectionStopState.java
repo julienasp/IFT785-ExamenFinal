@@ -16,7 +16,7 @@ public class NominativeElectionStopState implements INominativeElectionState {
     
      @Override
     public Object getNominativeElectionResult(NominativeElection ne) {
-        Log.log("NominativeElectionStopState-getNominativeElectionResult(): invalide state, the Referendum need to be stop first.");
+        Log.log("NominativeElectionStopState-getNominativeElectionResult(): invalide state, the Nominative Election needs to be stop first.");
         
         //Use of the Strategy pattern inside the state pattern
         return ne.getVotingSystemStandard().processingResult(ne);
@@ -24,13 +24,13 @@ public class NominativeElectionStopState implements INominativeElectionState {
 
     @Override
     public void doVoting(NominativeElection ne){
-        Log.log("NominativeElectionStopState-doVoting(): invalide state, the Referendum need to be ongoing to vote.");
+        Log.log("NominativeElectionStopState-doVoting(): invalide state, the Nominative Election needs to be ongoing to vote.");
     }
     
     @Override
     public void doStateAction(NominativeElection ne) {
         if(ne.getState().getStateCode() == Election.OUVERT){
-            Log.log("NominativeElectionStopState-doStateAction(): doing action relative to the end of the Referendum");
+            Log.log("NominativeElectionStopState-doStateAction(): doing action relative to the end of the Nominative Election");
             
             //We set the new State
             ne.setState(this);
@@ -42,7 +42,7 @@ public class NominativeElectionStopState implements INominativeElectionState {
             ne.depouiller();
         }
         else{
-            Log.log("NominativeElectionStopState-doStateAction(): invalide state, the Referendum need to be started first.");  
+            Log.log("NominativeElectionStopState-doStateAction(): invalide state, the Nominative Election needs to be started first.");  
         }
     }
 }

@@ -15,7 +15,7 @@ public class ReferendumVotingSystemStandardStrategy implements IVotingSystemStan
         if(e.getAge() >= 18) return true;
         else return false;
     }
-    public Bulletin giveBallotPaper(){
+    public Bulletin giveBallotPaper(Election e){
         return new BulletinReferendum(); // We return a Referendum Ballot Paper
     }
     public void votingProcess(Electeur e, Bulletin b){

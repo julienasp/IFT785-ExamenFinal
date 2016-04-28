@@ -20,16 +20,16 @@ public class RadioCanadaMediaObserver extends Observer {
     @Override
     public void update() {
         switch(this.subject.getState()){
-            case Referendum.OUVERT:
-                Log.log("RadioCanadaObserver-update(); The receive state: Referendum.OUVERT was handle.");
+            case Election.OUVERT:
+                Log.log("RadioCanadaObserver-update(); The receive state: Election.OUVERT was handle.");
                 instance.debutElection();
                 break;
-            case Referendum.TERMINE:
-                Log.log("RadioCanadaObserver-update(); The receive state: Referendum.TERMINE was handle.");
+            case Election.TERMINE:
+                Log.log("RadioCanadaObserver-update(); The receive state: Election.TERMINE was handle.");
                 instance.finElection(); 
                 break;
             case 3:
-                Log.log("RadioCanadaObserver-update(); The receive state: Referendum.NEWVOTE was handle.");
+                Log.log("RadioCanadaObserver-update(); The receive state: Election.NEWVOTE was handle.");
                 instance.unNouveauVote();
                 break;
            default:

@@ -38,7 +38,7 @@ public abstract class Election {
         //Use of the Strategy pattern + Template pattern
         IVotingSystemStandardStrategy vss = this.getVotingSystemStandard();
         if(vss.validateEligibility(electeur)){
-            Bulletin b = vss.giveBallotPaper();
+            Bulletin b = vss.giveBallotPaper(this);
             vss.votingProcess(electeur, b);
             vss.savingVote(this, b);
         }      
