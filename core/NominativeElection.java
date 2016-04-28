@@ -1,17 +1,21 @@
 package core;
 
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 
 public class NominativeElection extends Election {   
     /******************************/
     /****  PRIVATE ATTRIBUTES *****/
     /******************************/
-    private INominativeElectionState state;
+    private INominativeElectionState state;    
+    private Vector<String> nominate;
+    private Hashtable <String,Vector<NominativeBallot>> votes;  
     
     //Design pattern - Observer : Subject 
     private Subject subject = null;
     
-    private Vector<BulletinReferendum>[] votes;
 
     
     /***************************************/
@@ -19,15 +23,22 @@ public class NominativeElection extends Election {
     /***************************************/
 
     public NominativeElection() {
+        //Static values for the default Constructor                
+        this.nominate.add("A");
+        this.nominate.add("B");
+        this.nominate.add("C");
+        this.nominate.add("D");
+        this.nominate.add("E");
+        //End of the static values
+        
         this.subject = new Subject(); // new instance of Subject
+        
         //Replace Temp with Query
         NominativeElectionStateFactory.getNominativeElectionState("INITIALISE").doStateAction(this);
         
         //Default VotingSystemStandard is set to ReferendumVotingSystemStandardStrategy
-        setVotingSystemStandard(VotingSystemStandardStrategyFactory.getVotingSystemStandardStrategy("NominativeVSSS"));
-        setVotes(new Vector[2]); 
-        setVotes(BulletinReferendum.OUI, new Vector<BulletinReferendum>()); // index 1
-        setVotes(BulletinReferendum.NON, new Vector<BulletinReferendum>()); // index 2
+        setVotingSystemStandard(VotingSystemStandardStrategyFactory.getVotingSystemStandardStrategy("NominativeVSSS"));        
+        setVotes(generateInitialVoteTable(this.nominate));       
     }
 
   
@@ -57,6 +68,15 @@ public class NominativeElection extends Election {
     /***************************************/
     /*************  METHODS ****************/
     /***************************************/
+    private Hashtable <String,Vector<NominativeBallot>> generateInitialVoteTable(Vector<String> v){
+        Iterator it = v.iterator();
+        
+        Hashtable <String,Vector<NominativeBallot>> votes = new Hashtable <String,Vector<NominativeBallot>>();
+        while(it.hasNext()){
+            votes.put((String)it.next(), new Vector<NominativeBallot>());
+        }
+        return votes;
+    }
     public void ouvrir() {        
         //Replace Temp with Query + State pattern
         NominativeElectionStateFactory.getNominativeElectionState("START").doStateAction(this);
@@ -84,13 +104,10 @@ public class NominativeElection extends Election {
     protected Vector[] getVotes() {
         return this.votes;
     }
-    protected Vector<BulletinReferendum> getVotes(int i) {
+    protected Vector<NominativeBallot> getVotes(int i) {
         return this.votes[i];
     }
-    protected void setVotes(Vector<BulletinReferendum>[] v) {
-        this.votes = v;
-    }
-    protected void setVotes(int i, Vector<BulletinReferendum> v) {
-        this.votes[i] = v;
-    }
+    protected void setVotes(Hashtable <String,Vector<NominativeBallot>> ht) {
+        this.votes = ht;
+    }    
 }
